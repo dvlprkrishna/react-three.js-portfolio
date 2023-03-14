@@ -21,7 +21,7 @@ jobs:
         with:
           node-version: 16
       - name: Install node_modules
-        run: npm
+        run: npm install
       - name: Run react build script
         run: npm run build
         env:
