@@ -234,7 +234,7 @@ import {
         },
       ],
       image: portfolio,
-      source_code_link: "https://krishnasahu.in/",
+      source_code_link: "https://reactjs-portfolio-v1.netlify.app/",
     },
     {
       name: "Schwabe Pharma",
