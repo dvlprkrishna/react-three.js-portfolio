@@ -21,9 +21,9 @@ jobs:
         with:
           node-version: 16
       - name: Install node_modules
-        run: yarn
+        run: npm
       - name: Run react build script
-        run: yarn build
+        run: npm run build
         env:
           CI: false
       - name: FTP-Deploy-Action
