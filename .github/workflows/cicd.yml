@@ -32,4 +32,4 @@ jobs:
           server: ftp.krishnasahu.in
           username: dvlprkrishna@krishnasahu.in
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: build/
+          local-dir: dist/
