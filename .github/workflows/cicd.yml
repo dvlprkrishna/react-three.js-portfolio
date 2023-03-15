@@ -1,35 +1,37 @@
-# This is a basic workflow to help you get started with Actions
+name: Deploy to cPanel
 
-name: Build and Deploy React App via FTP
-
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the master branch
 on:
   push:
-    branches: [main]
+    branches:
+      - main
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build-and-deploy"
-  build-and-deploy:
-    # The type of runner that the job will run on
+  deploy:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-      - name: Install node_modules
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
         run: npm install
-      - name: Run react build script
+
+      - name: Build app
         run: npm run build
-        env:
-          CI: false
-      - name: FTP-Deploy-Action
-        uses: SamKirkland/FTP-Deploy-Action@4.3.2
+
+      - name: Create tarball
+        run: tar -czf app.tar.gz dist/
+
+      - name: Copy files to cPanel
+        uses: appleboy/scp-action@master
         with:
-          server: ftp.krishnasahu.in
-          username: dvlprkrishna@krishnasahu.in
-          password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: dist/
+          host: ${{ secrets.CPANEL_HOST }}
+          username: ${{ secrets.CPANEL_USER }}
+          password: ${{ secrets.CPANEL_PASS }}
+          source: app.tar.gz
+          target: /home/dvlprkrishna/public_html/
+
+      - name: Extract tarball
+        run: ssh dvlprkrishna@krishnasahu.in 'cd public_html/ && tar -xzf app.tar.gz'
+
+      - name: Restart web server
+        run: ssh dvlprkrishna@krishnasahu.in 'sudo systemctl restart apache2'
