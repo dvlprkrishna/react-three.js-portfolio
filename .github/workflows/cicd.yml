@@ -1,4 +1,4 @@
-name: Deploy to cPanel
+name: Deploy to cPanel using ChatGPT
 
 on:
   push:
