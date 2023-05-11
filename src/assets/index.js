@@ -36,8 +36,19 @@ import airportcodes from "./airportcodes.png";
 import jobit from "./jobit.png";
 import portfolio from "./portfolio.png";
 import tripguide from "./tripguide.png";
+import sharktank from "./sharktank.png";
+import siddesh from "./siddesh.png";
+
+import linkedin from "./linkedin.png";
+import twitter from "./twitter.png";
+import instagram from "./instagram.png";
+import rupee from "./rupee.png";
 
 export {
+  linkedin,
+  twitter,
+  instagram,
+  rupee,
   logo,
   backend,
   creator,
@@ -54,6 +65,8 @@ export {
   javascript,
   ashish,
   zaid,
+  siddesh,
+  sharktank,
   mongodb,
   nodejs,
   reactjs,
@@ -63,9 +76,14 @@ export {
   threejs,
   lionbridge,
   shopify,
-  accenture,webstream,viztar,
+  accenture,
+  webstream,
+  viztar,
   tesla,
-  carrent,airportcodes,portfolio,schwabe,
+  carrent,
+  airportcodes,
+  portfolio,
+  schwabe,
   jobit,
   tripguide,
 };
